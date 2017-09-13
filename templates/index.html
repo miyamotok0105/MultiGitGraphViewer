@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Place this data between the <head> tags of your website -->
+<title>Community pop references visualized</title>
+<meta name="description" content="Every pop culture reference of Community presented on interactive charts." />
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Community pop references visualized">
+<meta name="twitter:description" content="Every pop culture reference of Community presented on interactive charts">
+<meta name="twitter:image:src" content="http://i.imgur.com/t4Df6VD.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Community pop references visualized" />
+<meta property="og:type" content="Every pop culture reference of Community presented on interactive charts." />
+<meta property="og:url" content="http://communitypoprefs.com/" />
+<meta property="og:image" content="http://i.imgur.com/t4Df6VD.jpg" />
+<meta property="og:description" content="Every pop culture reference of Community presented on interactive charts." /> 
+<meta property="og:site_name" content="Community pop references" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60830100-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<link href='http://fonts.googleapis.com/css?family=Karla:400,700,700italic' rel='stylesheet' type='text/css'>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+	<link rel="stylesheet" href="static/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="static/css/style.css"> <!-- Resource style -->
+	<script src="static/js/modernizr.js"></script> <!-- Modernizr -->
+  <script src="static/js/s1.js"></script>
+  <script src="static/js/s2.js"></script>
+  <script src="static/js/s3.js"></script>
+  <script src="static/js/s4.js"></script>
+  <script src="static/js/s5.js"></script>
+
+  	<style>
+
+      text.axis-workweek {
+        fill: #fff;
+      }
+
+      text {
+        fill: #fff;
+      }
+
+      text.caption {
+        fill:#868686;        
+        font-variant: uppercase;
+      }
+
+  svg *::selection {
+         background : transparent;
+      }
+     
+      svg *::-moz-selection {
+         background:transparent;
+      } 
+     
+      svg *::-webkit-selection {
+         background:transparent;
+      }
+      rect.selection {
+        stroke          : #333;
+        stroke-dasharray: 4px;
+        stroke-opacity  : 0.5;
+        fill            : transparent;
+      }
+
+      rect.cell-border {
+        stroke: #eee;
+        stroke-width:0.3px;   
+      }
+
+      rect.cell-selected {
+        stroke: rgb(51,102,153);
+        stroke-width:0.5px;   
+      }
+
+      rect.cell-hover {
+        fill: #fff;
+      }
+
+      rect.bordered {
+        
+        stroke: rgba(64, 76, 87, 0.99);
+        stroke-width:2px;   
+      }
+      
+
+      text.text-selected {
+        fill: #fff;
+      }
+
+      
+      text.text-hover {
+        fill: #fff;
+      }
+#tooltip {
+
+        position: absolute;
+        width: auto;
+        height: auto;
+        pointer-events: none;
+         line-height: 1;
+        font-weight: bold;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 2px;
+        pointer-events: none;
+      }
+
+#tooltip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none;
+}
+
+#tooltip.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
+      #tooltip.hidden {
+        display: none;
+      }
+
+      #tooltip p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 20px;
+      }
+
+
+</style>
+
+
+
+	
+</head>
+<body>
+	<nav id="cd-vertical-nav">
+		<ul>
+
+			<li>
+				<a href="#section2" data-number="1">
+					<span class="cd-dot"></span>
+					<span class="cd-label">2017/9 versions</span>
+				</a>
+			</li>
+			<li>
+				<a href="#section3" data-number="2">
+					<span class="cd-dot"></span>
+					<span class="cd-label">Season 2</span>
+				</a>
+			</li>
+			<li>
+				<a href="#section4" data-number="3">
+					<span class="cd-dot"></span>
+					<span class="cd-label">Season 3</span>
+				</a>
+			</li>
+			<li>
+				<a href="#section5" data-number="4">
+					<span class="cd-dot"></span>
+					<span class="cd-label">Season 4</span>
+				</a>
+			</li>
+      <li>
+        <a href="#section6" data-number="5">
+          <span class="cd-dot"></span>
+          <span class="cd-label">Season 5</span>
+        </a>
+      </li>
+			<li>
+				<a href="#section7" data-number="6">
+					<span class="cd-dot"></span>
+					<span class="cd-label">About</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
+
+<!-- 	<section id="section1" class="cd-section">
+		<h1>community pop culture references</h1>
+
+        
+
+		<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>
+	</section> -->
+  <!-- cd-section -->
+
+	<section id="section2" class="cd-section" id="chart">
+
+		 <div id="chart"></div>
+     
+       <div id="stleft">
+        <h3>Deep Learning libary</h3>
+        <h4></h4>
+       </div>
+        <div id="stcenter">
+        <h3>2017/9 versions</h3>
+        <h4></h4>
+       </div>
+       <div id="stright">
+        <h3></h3>
+        <h4></h4>
+       </div>
+       <div id="stlast">
+        <h3></h3>
+        <h4></h4>
+       </div>
+    
+	</section><!-- cd-section -->
+
+	<section id="section3" class="cd-section" id="chart2" >
+		 <div id="chart2"></div>
+     <div id="stleft">
+        <h3>Star Wars</h3>
+        <h4>MOST FREQUENT MOVIES</h4>
+       </div>
+        <div id="stcenter">
+        <h3>Cougar Town</h3>
+        <h4>MOST FREQUENT TV SERIES</h4>
+       </div>
+       <div id="stright">
+        <h3>Wizard of Oz</h3>
+        <h4>OLDEST REFERENCE</h4>
+       </div>
+       <div id="stlast">
+        <h3>Intermediate Documentary Filmmaking</h3>
+        <h4>MOST REFERENCE-HEAVY EPISODE (2x16)</h4>
+       </div>
+	</section><!-- cd-section -->
+
+	<section id="section4" class="cd-section" id="chart3">
+		<div id="chart3"></div>
+    <div id="stleft">
+        <h3>Star Wars</h3>
+        <h4>MOST FREQUENT MOVIES</h4>
+       </div>
+        <div id="stcenter">
+        <h3>Steven Spielberg</h3>
+        <h4>MOST PERSON MENTIONS</h4>
+       </div>
+       <div id="stright">
+        <h3>Dr. Who</h3>
+        <h4>MOST FREQUENT TV SERIES</h4>
+       </div>
+       <div id="stlast">
+        <h3>Biology 101</h3>
+        <h4>MOST REFERENCE-HEAVY EPISODE (3x01)</h4>
+       </div>
+	</section><!-- cd-section -->
+
+	<section id="section5" class="cd-section" id="chart4">
+     <div id="chart4"></div>
+      <div id="stfinal1">
+        <h3>Star Wars</h3>
+        <h4>MOST FREQUENT MOVIES</h4>
+       </div>
+       <div id="stfinal2">
+        <h3>Die Hard</h3>
+        <h4>MOST FREQUENT <br> NON-STAR WARS MOVIES</h4>
+       </div>
+       <div id="stfinal3">
+        <h3>Hogan's Heroes</h3>
+        <h4>OLDEST REFERENCE</h4>
+       </div>
+       <div id="stfinal4">
+        <h3>Heroic Origins</h3>
+        <h4>MOST REFERENCE-HEAVY EPISODE (4x12)</h4>
+       </div>
+		
+	</section><!-- cd-section -->
+
+  <section id="section6" class="cd-section" id="chart5">
+    <div id="chart5"></div>
+     <div id="stfinal1">
+        <h3>Police Academy</h3>
+        <h4>MOST FREQUENT MOVIE</h4>
+       </div>
+       <div id="stfinal2">
+        <h3>The Wizard of Oz</h3>
+        <h4>OLDEST MOVIE REFERENCE</h4>
+       </div>
+       <div id="stfinal3">
+        <h3>M*A*S*H</h3>
+        <h4>OLDEST TV REFERENCE</h4>
+       </div>
+       <div id="stfinal4">
+        <h3>Introduction to Teaching</h3>
+        <h4>MOST REFERENCE-HEAVY EPISODE (5x02)</h4>
+       </div>
+  </section><!-- cd-section -->
+
+	<section id="section7" class="cd-section">
+		<article> This website presents every movie, tv or celebrity mention on every episode of <a href="http://www.imdb.com/title/tt1439629">Community TV series</a> by every main character.<br><br>"Community makes heavy use of meta-humor and pop culture references, often parodying film and television clichés and tropes"  &mdash;  Wikipedia <br><br> We wanted to prove that, quantifiably and visually.<br> <br> There are some limitations though. In order to keep the graphs readable and scannable, we included only the seven starring actors. Also, the real number of pop references is higher, since books and music didn't make the cut.<br> <br>The heatmaps are built with <a href="http://d3js.org/">D3.js</a>. The typeface is Karla. The color palette is based on ColorBrewer. Content data courtesy of a <a href="http://community-sitcom.wikia.com/">fan wiki</a> and IMDB.</article>
+    
+
+    <footer>
+      A data visualization project by <a href="http://linkedin.com/in/dispathis">Dimitris Spathis</a> and <a href="mailto:eliaskouslis@gmail.com" target="_top">Elias Kouslis</a>
+    </footer>
+	</section><!-- cd-section -->
+
+	<div id="tooltip" class="hidden">
+            <p><span id="value"></p>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="static/js/main.js"></script> <!-- Resource jQuery -->
+
+</body>
+</html>
