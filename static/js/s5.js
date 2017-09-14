@@ -1,11 +1,11 @@
-var margin = { top: 50, right: 0, bottom: 100, left: 60 },
+var margin = { top: 50, right: 0, bottom: 100, left: 100 },
           width = 980- margin.left - margin.right,
           height = 430 - margin.top - margin.bottom,
           gridSize = Math.floor(width / 24),
           legendElementWidth = gridSize*2,
           buckets = 6,
           colors = ["rgba(64, 76, 87, 0.99)","rgba(86, 78, 103, 0.99)","rgba(129, 98, 137, 0.99)","rgba(170, 119, 170, 0.99)","rgba(212, 140, 203, 0.99)","#FEA1EB"], // alternatively colorbrewer.YlGnBu[9]
-          actor = ['Jeff', 'Abed', 'Britta', 'Annie', 'Troy', 'Shirley', 'Pierce'],
+          actor = ['tensorflow', 'keras', 'pytorch', 'theano', 'caffe', 'cntk', 'Pierce'],
           eps5= ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11','12', '13'];
 
 

@@ -1,22 +1,22 @@
-var margin = { top: 50, right: 0, bottom: 100, left: 60 },
+var margin = { top: 50, right: 0, bottom: 100, left: 100 },
           width = 980- margin.left - margin.right,
           height = 430 - margin.top - margin.bottom,
           gridSize = Math.floor(width / 24),
           legendElementWidth = gridSize*2,
           buckets = 6,
           colors = ["rgba(64, 76, 87, 0.99)","rgba(86, 78, 103, 0.99)","rgba(129, 98, 137, 0.99)","rgba(170, 119, 170, 0.99)","rgba(212, 140, 203, 0.99)","#FEA1EB"], // alternatively colorbrewer.YlGnBu[9]
-          actor = ['Jeff', 'Abed', 'Britta', 'Annie', 'Troy', 'Shirley', 'Pierce'],
+          actor = ['tensorflow', 'Abed', 'Britta', 'Annie', 'Troy', 'Shirley', 'Pierce'],
           eps2 = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11','12', '13','14','15','16','17', '18', '19', '20', '21', '22', '23', '24'];
 
 
-      d3.csv("http://communitypoprefs.com/data/season2.csv",
+      d3.csv("http://0.0.0.0:8081/season1.csv",
         function(d) {
          // var strings = d3.tsv.parse(string);
           return {
             episodes: +d.episodes,
             actors: +d.actors,
             value: +d.value,
-            movie: d.movie,
+            release: d.release,
             tv: d.tv,
             people: d.people
 
@@ -83,46 +83,46 @@ var margin = { top: 50, right: 0, bottom: 100, left: 60 },
                   
                //Show the tooltip
                
-              if (d.movie.length==0 && d.tv.length==0 && d.people.length==0) {
+              if (d.release.length==0 && d.tv.length==0 && d.people.length==0) {
                  d3.select("#tooltip").classed("hidden", true);
               } 
               else {
                 
-                if (d.movie.length!=0 && d.tv.length==0 && d.people.length==0){
+                if (d.release.length!=0 && d.tv.length==0 && d.people.length==0){
                 d3.select("#tooltip").classed("hidden", false)
                   
-                  .html("<strong>movie:</strong> <span style='color:#2ECC71'>" +d.movie+ "</span>");
+                  .html("<strong>release:</strong> <span style='color:#2ECC71'>" +d.release+ "</span>");
                 }
 
-                else if (d.movie.length==0 && d.tv.length!=0 && d.people.length==0){
+                else if (d.release.length==0 && d.tv.length!=0 && d.people.length==0){
                    d3.select("#tooltip").classed("hidden", false)
                      .html("<strong>tv: </strong> <span style='color:#3498DB'>" +d.tv+ "</span>");
 
 
                 }
 
-                else if (d.movie.length==0 && d.tv.length==0 && d.people.length!=0){
+                else if (d.release.length==0 && d.tv.length==0 && d.people.length!=0){
                    d3.select("#tooltip").classed("hidden", false)
                      
                      .html("<strong>people: </strong> <span style='color:#F1C40F'>" +d.people+ "</span>");
 
                 }
 
-                else if (d.movie.length!=0 && d.tv.length!=0 && d.people.length==0){
+                else if (d.release.length!=0 && d.tv.length!=0 && d.people.length==0){
                    d3.select("#tooltip").classed("hidden", false)
                      
-                     .html("<strong>tv: </strong> <span style='color:#2ECC71'>" +d.tv+ "</span>  <br> <strong> movie: </strong> <span style='color:#F1C40F'>" +d.movie+ "</span>");
+                     .html("<strong>tv: </strong> <span style='color:#2ECC71'>" +d.tv+ "</span>  <br> <strong> release: </strong> <span style='color:#F1C40F'>" +d.release+ "</span>");
 
                 }
 
-                else if (d.movie.length!=0 && d.tv.length==0 && d.people.length!=0){
+                else if (d.release.length!=0 && d.tv.length==0 && d.people.length!=0){
                    d3.select("#tooltip").classed("hidden", false)
                      
-                     .html("<strong>movie:</strong> <span style='color:#2ECC71'>" +d.movie+ "</span> <br> <strong>people: </strong> <span style='color:#F1C40F'>" +d.people+ "</span>");
+                     .html("<strong>release:</strong> <span style='color:#2ECC71'>" +d.release+ "</span> <br> <strong>people: </strong> <span style='color:#F1C40F'>" +d.people+ "</span>");
 
                 }
 
-                else if (d.movie.length==0 && d.tv.length!=0 && d.people.length!=0){
+                else if (d.release.length==0 && d.tv.length!=0 && d.people.length!=0){
                    d3.select("#tooltip").classed("hidden", false)
                      .html("<strong>tv: </strong> <span style='color:#3498DB'>" +d.tv+ "</span> <br> <strong>people: </strong> <span style='color:#F1C40F'>" +d.people+ "</span>");
 
@@ -131,7 +131,7 @@ var margin = { top: 50, right: 0, bottom: 100, left: 60 },
 
                 else {
                   d3.select("#tooltip").classed("hidden", false)
-                     .html("<strong>movie:</strong> <span style='color:#2ECC71'>" +d.movie+ "</span> <br> <strong>tv: </strong> <span style='color:#3498DB'>" +d.tv+ "</span> <br> <strong>people: </strong> <span style='color:#F1C40F'>" +d.people+ "</span>");                 
+                     .html("<strong>release:</strong> <span style='color:#2ECC71'>" +d.release+ "</span> <br> <strong>tv: </strong> <span style='color:#3498DB'>" +d.tv+ "</span> <br> <strong>people: </strong> <span style='color:#F1C40F'>" +d.people+ "</span>");                 
 
                    }
 
