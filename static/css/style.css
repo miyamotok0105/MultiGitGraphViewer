@@ -86,7 +86,7 @@ Main components
 
 .cd-section:nth-of-type(2) {
   background-color: #745360;
-  background: radial-gradient(transparent, black), url("../img/annie.jpg") no-repeat center center fixed;
+  background: radial-gradient(transparent, black), url("../img/img1.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -95,7 +95,7 @@ Main components
 
 .cd-section:nth-of-type(3) {
   background-color: #745360;
-  background: radial-gradient(transparent, black), url("../img/mario.jpg") no-repeat center center fixed;
+  background: radial-gradient(transparent, black), url("../img/img2.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -104,7 +104,7 @@ Main components
 
 .cd-section:nth-of-type(4) {
   background-color: #745360;
-  background: radial-gradient(transparent, black), url("../img/pulp.jpg") no-repeat center center fixed;
+  background: radial-gradient(transparent, black), url("../img/img3.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -112,7 +112,7 @@ Main components
 }
 .cd-section:nth-of-type(5) {
   background-color: #745360;
-  background: radial-gradient(transparent, black), url("../img/law.jpg") no-repeat center center fixed;
+  background: radial-gradient(transparent, black), url("../img/img4.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -120,7 +120,7 @@ Main components
 }
 .cd-section:nth-of-type(6) {
   background-color: #745360;
-  background: radial-gradient(transparent, black), url("../img/gun.jpg") no-repeat center center fixed;
+  background: radial-gradient(transparent, black), url("../img/img5.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -222,6 +222,7 @@ footer {
   max-width: 300px;
   text-align: center;
 }
+
 #stleft h3 {
    font-size: 27px;
  color: #fff;
@@ -514,6 +515,15 @@ footer {
   max-width: 768px;
   text-align: center;
 }
+
+
+#title1 {
+  color: rgba(152,175,197,0.7);
+  background-color: black;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+
 
 .cd-section h1 {
   color: white;
